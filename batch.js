@@ -47,7 +47,9 @@ function add(fn) {
   function queue() {  // ISSUE: variable shadowing. Will not break code but not a great practice
     args = [].slice.call(arguments)
     self = this // ISSUE: `this` refers to the global in this context,
-                // if this is what was intended it is redundant, see below
+                // if this is what was intended it is redundant, see below.
+                // if not intended, could break certain functions when called from queue
+
     // prevents double queue-ing
     if(!queued) {
       queued = true
